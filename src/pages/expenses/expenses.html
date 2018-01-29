@@ -1,0 +1,57 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>
+      Expenses
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let expense of expenses">
+
+      <ion-item>
+
+        <ion-row>
+
+          <ion-col text-center>
+            <ion-icon name="calendar"></ion-icon>
+            {{ expense.date | date:'fullDate' }}
+          </ion-col>
+
+          <ion-col text-center>
+            <ion-icon name="text"></ion-icon>
+            {{ expense.concept }}
+          </ion-col>
+
+          <ion-col text-center>
+            <ion-icon name="cash"></ion-icon>
+            {{ expense.total }} €
+          </ion-col>
+
+        </ion-row>
+
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="showMovement(income._id)">
+          <ion-icon name="more"></ion-icon>
+          Info
+        </button>
+        <button ion-button color="warning" (click)="editMovement(income._id)">
+          <ion-icon name="create"></ion-icon>
+          Edit
+        </button>
+        <button ion-button color="danger" (click)="deleteexpense(expense._id)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

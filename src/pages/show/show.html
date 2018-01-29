@@ -1,0 +1,81 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>
+      Information
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card>
+
+    <ion-item>
+      <ion-icon name="information" item-start large></ion-icon>
+      <h2>
+        Concept
+      </h2>
+      <p>
+        {{movement.concept}}
+      </p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="text" item-start large></ion-icon>
+      <h2>
+        Description
+      </h2>
+      <p>
+        {{movement.description}}
+      </p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="calendar" item-start large></ion-icon>
+      <h2>
+        Date
+      </h2>
+      <p>
+        {{ movement.date | date:'fullDate' }}
+      </p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="pricetag" item-start large></ion-icon>
+      <h2>
+        Type
+      </h2>
+      <p>
+        {{ movement.type | uppercase }}
+      </p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="cash" item-start large></ion-icon>
+      <h2>
+        Total
+      </h2>
+      <p>
+        {{ movement.total }} €
+      </p>
+    </ion-item>
+
+  </ion-card>
+
+  <ion-card>
+    <ion-item *ngFor="let item of movement.items">
+      <ion-icon name="bookmark" item-start large></ion-icon>
+      <h2>
+        {{item.name || uppercase }}
+      </h2>
+      <p>
+        {{ item.amount }} €
+      </p>
+    </ion-item>
+  </ion-card>
+
+</ion-content>

@@ -2,5 +2,7 @@
   "name": "movements",
   "app_id": "5db2228e",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }

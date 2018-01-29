@@ -1,0 +1,116 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form (ngSubmit)="doAction()" #createMovementForm="ngForm">
+    <ion-row>
+      <ion-col>
+        <ion-list>
+
+          <ion-item>
+            <ion-label floating>
+              Concept
+            </ion-label>
+
+            <ion-input type="text" placeholder="Concept" name="concept" [(ngModel)]="movement.concept" [ngModelOptions]="{standalone: true}" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>
+              Description
+            </ion-label>
+
+            <ion-input type="text" placeholder="Description" name="description" [(ngModel)]="movement.description" [ngModelOptions]="{standalone: true}"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>
+              Type
+            </ion-label>
+
+            <ion-select [(ngModel)]="movement.type" [ngModelOptions]="{standalone: true}" required>
+              <ion-option value="income">Income</ion-option>
+              <ion-option value="expense">Expense</ion-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>
+              Date
+            </ion-label>
+
+            <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY MMM DDD" [(ngModel)]="movement.date" [ngModelOptions]="{standalone: true}" required></ion-datetime>
+          </ion-item>
+
+
+            <ion-row>
+
+              <ion-col>
+                <ion-item>
+                  <ion-label floating>
+                    Item's name
+                  </ion-label>
+
+                  <ion-input type="text" placeholder="Item's name" [(ngModel)]="item.name" [ngModelOptions]="{standalone: true}" required></ion-input>
+                </ion-item>
+              </ion-col>
+
+              <ion-col>
+                <ion-item>
+                  <ion-label floating>
+                    Item's amount
+                  </ion-label>
+
+                  <ion-input type="number" min="0" step="0.01" placeholder="Item's amount" [(ngModel)]="item.amount" [ngModelOptions]="{standalone: true}" required></ion-input>
+                </ion-item>
+              </ion-col>
+
+              <ion-col col-2>
+                <button class="align-bottom" ion-button icon-only (click)="$event.preventDefault(); addItem();">
+                  <ion-icon name="add" ></ion-icon>
+                </button>
+              </ion-col>
+
+            </ion-row>
+
+          <ion-item *ngFor="let item of movement.items; let i = index">
+            <ion-row>
+              <ion-col>
+                {{item.name}}
+              </ion-col>
+
+              <ion-col>
+                {{item.amount}}
+              </ion-col>
+
+              <ion-col>
+                <button ion-button icon-only color="danger" (click)="$event.preventDefault(); deleteItem(i);">
+                  <ion-icon name="trash"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-item>
+
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button color="success" icon-right block type="submit" [disabled]="!createMovementForm.form.valid">
+          Create Movement
+          <ion-icon name="send"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+</ion-content>
