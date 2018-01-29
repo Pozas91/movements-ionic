@@ -18,17 +18,23 @@
 
         <ion-row>
 
-          <ion-col text-center>
+          <ion-col>
             <ion-icon name="calendar"></ion-icon>
             {{ income.date | date:'fullDate' }}
           </ion-col>
 
-          <ion-col text-center>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
             <ion-icon name="text"></ion-icon>
             {{ income.concept }}
           </ion-col>
+        </ion-row>
 
-          <ion-col text-center>
+        <ion-row>
+
+          <ion-col>
             <ion-icon name="cash"></ion-icon>
             {{ income.total }} €
           </ion-col>
