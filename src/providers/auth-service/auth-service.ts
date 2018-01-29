@@ -24,8 +24,7 @@ export class User {
 @Injectable()
 export class AuthServiceProvider {
 
-  // private url = 'https://npg-movements.herokuapp.com/api/v1/';
-  private url = 'https://movements-pozas91.c9users.io/api/v1/';
+  private url = 'https://npg-movements.herokuapp.com/api/v1/';
   private user: User;
 
   constructor(
